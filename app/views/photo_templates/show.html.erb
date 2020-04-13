@@ -34,7 +34,11 @@
       </dt>
       <!-- Display post_id start -->
       <dd>
-        <%= @photo.post_id %>
+        <% if @photo.post.present? %>
+          <a href="/posts/<%= @photo.post_id %>">
+            <%= @photo.post.title %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display post_id end -->
 

@@ -58,7 +58,11 @@
 
         <!-- Display photo.post_id start -->
         <td>
-          <%= photo.post.title %>
+          <% if photo.post.present? %>
+            <a href="/posts/<%= photo.post.id %>">
+              <%= photo.post.title %>
+            </a>
+          <% end %>
         </td>
         <!-- Display photo.post_id end -->
 
