@@ -11,28 +11,23 @@
         </a>
       </div>
 
-      <!-- Edit link photo start -->
       <div class="col">
         <a href="/photos/<%= @photo.id %>/edit" class="btn btn-block btn-outline-secondary">
           Edit photo
         </a>
       </div>
-      <!-- Edit link photo end -->
 
-      <!-- Delete link photo start -->
       <div class="col">
         <a href="/delete_photo/<%= @photo.id %>" class="btn btn-block btn-outline-secondary">
           Delete photo
         </a>
       </div>
-      <!-- Delete link photo end -->
     </div>
 
     <dl>
       <dt>
         Post
       </dt>
-      <!-- Display post_id start -->
       <dd>
         <% if @photo.post.present? %>
           <a href="/posts/<%= @photo.post_id %>">
@@ -40,37 +35,28 @@
           </a>
         <% end %>
       </dd>
-      <!-- Display post_id end -->
 
       <dt>
         Image
       </dt>
-      <!-- Display image start -->
       <dd>
         <img src="<%= @photo.image %>" class="img-fluid">
       </dd>
-      <!-- Display image end -->
 
       <dt>
         Created at
       </dt>
-      <!-- Display created_at start -->
       <dd>
         <%= time_ago_in_words(@photo.created_at) %> ago
       </dd>
-      <!-- Display created_at end -->
 
       <dt>
         Updated at
       </dt>
-      <!-- Display updated_at start -->
       <dd>
         <%= time_ago_in_words(@photo.updated_at) %> ago
       </dd>
-      <!-- Display updated_at end -->
     </dl>
   </div>
 </div>
 
-<!-- Show Page Customization starts -->
-<!-- Show Page Customization end -->
