@@ -53,6 +53,14 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy_row_from_post
+    @photo = Photo.find(params.fetch("id_to_remove"))
+
+    @photo.destroy
+
+    redirect_to("/posts/#{@photo.post_id}", notice: "Photo deleted successfully.")
+  end
+
   def destroy_row
     @photo = Photo.find(params.fetch("id_to_remove"))
 
