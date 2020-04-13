@@ -16,7 +16,11 @@
   </div>
 </div>
 
-
+<div class="row mb-3">
+  <div class="col-md-12">
+    <%= render partial: "photo_templates/all_photos_map" %>
+  </div>
+</div>
 
 <hr>
 
@@ -34,6 +38,10 @@
 
         <th>
           Image
+        </th>
+
+        <th>
+          Location
         </th>
 
         <th>
@@ -64,6 +72,10 @@
 
         <td>
           <img src='<%= photo.image %>' class='img-fluid'>
+        </td>
+
+        <td>
+          <%= photo.location %>
         </td>
 
         <td>
