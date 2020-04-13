@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @photo = Photo.new
     @post = Post.find(params.fetch("id_to_display"))
 
     render("post_templates/show.html.erb")
