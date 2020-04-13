@@ -2,6 +2,11 @@ class PhotosController < ApplicationController
   def index
     @q = Photo.ransack(params[:q])
     @photos = @q.result(:distinct => true).includes(:post).page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@photos.where.not(:location_latitude => nil)) do |photo, marker|
+      marker.lat photo.location_latitude
+      marker.lng photo.location_longitude
+      marker.infowindow "<h5><a href='/photos/#{photo.id}'>#{photo.post_id}</a></h5><small>#{photo.location_formatted_address}</small>"
+    end
 
     render("photo_templates/index.html.erb")
   end
@@ -23,6 +28,7 @@ class PhotosController < ApplicationController
 
     @photo.post_id = params.fetch("post_id")
     @photo.image = params.fetch("image") if params.key?("image")
+    @photo.location = params.fetch("location")
 
     if @photo.valid?
       @photo.save
@@ -38,6 +44,7 @@ class PhotosController < ApplicationController
 
     @photo.post_id = params.fetch("post_id")
     @photo.image = params.fetch("image") if params.key?("image")
+    @photo.location = params.fetch("location")
 
     if @photo.valid?
       @photo.save
@@ -59,6 +66,7 @@ class PhotosController < ApplicationController
 
     @photo.post_id = params.fetch("post_id")
     @photo.image = params.fetch("image") if params.key?("image")
+    @photo.location = params.fetch("location")
 
     if @photo.valid?
       @photo.save
