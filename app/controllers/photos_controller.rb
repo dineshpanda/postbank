@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
 
     @photo.post_id = params.fetch("post_id")
-    @photo.image = params.fetch("image")
+    @photo.image = params.fetch("image") if params.key?("image")
 
     if @photo.valid?
       @photo.save
@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
 
     @photo.post_id = params.fetch("post_id")
-    @photo.image = params.fetch("image")
+    @photo.image = params.fetch("image") if params.key?("image")
 
     if @photo.valid?
       @photo.save
@@ -57,7 +57,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params.fetch("id_to_modify"))
 
     @photo.post_id = params.fetch("post_id")
-    @photo.image = params.fetch("image")
+    @photo.image = params.fetch("image") if params.key?("image")
 
     if @photo.valid?
       @photo.save
